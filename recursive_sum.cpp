@@ -27,7 +27,7 @@ int sum(std::vector<int> input)
 }
 
 int main() {
-    std::vector<int> values {1,2,3,4,6,7};
+    std::vector<int> values {1,2,3,4,6,5,7};
     print(std::cout, values);
     std::cout << sum(values);
     std::cin.get();
