@@ -1,4 +1,5 @@
 #include <vector>
+#include <iterator>
 #include <iostream>
 
 
@@ -11,18 +12,18 @@ void print(std::ostream& os, std::vector<int> const  &values)
     os << std::endl;
 }
 
-int sumHelper(std::vector<int> const& input, int left, int right)
+int sumHelper(std::vector<int> const& input, std::vector<int>::iterator it1, std::vector<int>::iterator it2)
 {
-    if (left == right) return input[left];
+    if (it1 == it2) return *it1;
 
-    return input[left] + sumHelper(input, left+1, right);
+    return *it1 + sumHelper(input, std::next(it1), it2);
 }
 
 int sum(std::vector<int> input)
 {
     if (input.size() == 1 || input.size() == 0) return input[0];
 
-    return sumHelper(input, 0, input.size()-1);
+    return sumHelper(input, std::begin(input), std::end(input)-1);
 }
 
 int main() {
